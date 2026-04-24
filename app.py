@@ -68,7 +68,7 @@ async def json_to_proto(json_data: str, proto_message) -> bytes:
         raise
 
 async def get_access_token(account: str):
-    url = "https://ffmconnect.live.gop.garenanow.com/oauth/guest/token/grant"
+    url = "https://100067.connect.garena.com/api/v2/oauth/guest/token:grant"
     # account is expected to be "uid=...&password=..."
     payload = f"{account}&response_type=token&client_type=2&client_secret=2ee44819e9b4598845141067b281621874d0d5d7af9d8f7e00c1e54715b7d1e3&client_id=100067"
     headers = {
@@ -108,7 +108,7 @@ async def create_jwt(uid: str, password: str):
         })
         proto_bytes = await json_to_proto(body, FreeFire_pb2.LoginReq())
         payload = aes_cbc_encrypt(MAIN_KEY, MAIN_IV, proto_bytes)
-        url = "https://loginbp.ggblueshark.com/MajorLogin"
+        url = "https://clientbp.ggpolarbear.com/MajorLogin"
         headers = {
             'User-Agent': USERAGENT,
             'Connection': "Keep-Alive",
